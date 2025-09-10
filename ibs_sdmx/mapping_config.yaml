@@ -1,0 +1,80 @@
+dimension_order:
+  - FREQ
+  - MEASURE
+  - POSITION
+  - INSTR
+  - CURR_DENOM
+  - CURR_TYPE
+  - PARENT_CNTRY
+  - REPORTING_INST_TYPE
+  - REPORTER
+  - CP_SECTOR
+  - CP_COUNTRY
+  - TIME_PERIOD
+
+legacy_token_map:
+  0: FREQ
+  1: MEASURE
+  2: POSITION
+  3: INSTR
+  4: CURR_DENOM
+  5: CURR_TYPE
+  6: PARENT_CNTRY
+  7: REPORTING_INST_TYPE
+  8: REPORTER
+  9: CP_SECTOR
+  10: CP_COUNTRY
+  11: TIME_PERIOD_RAW
+  12: SERIES_ID
+  13: OBS_VALUE
+  14: CONF_STATUS_RAW_1
+  15: CONF_STATUS_RAW_2
+
+normalizations:
+  FREQ: { Q: Q }
+  MEASURE: { S: S }
+  POSITION: { C: C }
+  INSTR: { A: A }
+  CURR_TYPE: { D: D }
+  REPORTING_INST_TYPE: { A: A }
+  CP_SECTOR: { A: A }
+
+conf_status_map:
+  A: Restricted
+  F: Free
+break_status_map:
+  N: NoBreak
+  Y: Break
+
+time:
+  quarterly:
+    input_length: 10
+    output_format: "{year}-Q{quarter}"
+
+codelists:
+  FREQ:
+    - {id: Q, name: Quarterly}
+  MEASURE:
+    - {id: S, name: Stock}
+  POSITION:
+    - {id: C, name: Claims}
+  INSTR:
+    - {id: A, name: AllInstruments}
+  CURR_DENOM:
+    - {id: CAD, name: CanadianDollar}
+  CURR_TYPE:
+    - {id: D, name: DomesticCurrencyType}
+  PARENT_CNTRY:
+    - {id: 5J, name: ParentCountry_5J}
+  REPORTING_INST_TYPE:
+    - {id: A, name: AllReportingInstitutions}
+  REPORTER:
+    - {id: CA, name: Canada}
+  CP_SECTOR:
+    - {id: A, name: AllCounterpartySectors}
+  CP_COUNTRY:
+    - {id: 1C, name: CounterpartyCountry_1C}
+
+obs_attributes:
+  - CONF_STATUS
+  - BREAK_STATUS
