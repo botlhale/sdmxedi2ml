@@ -2,10 +2,10 @@
 requires = ["setuptools", "wheel"]
 
 [project]
-name = "pysdmx-lbs-conversion"
+name = "pysdmx-ibs-conversion"
 version = "0.1.0"
-description = "Legacy BIS LBS line format to SDMX 3.x generator using pysdmx"
-authors = [{name="Your Name", email="you@example.org"}]
+description = "Legacy BIS IBS line format to SDMX 3.x generator using pysdmx"
+authors = [{name="Botlhale Mosweu", email="botnts@gmail.com"}]
 readme = "README.md"
 license = {text = "MIT"}
 requires-python = ">=3.10"
