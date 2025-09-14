@@ -3,12 +3,22 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from .parser import parse_lines
-from .mapping import load_config, tokens_to_rows, normalize, apply_confidentiality, finalize_numeric
-from .convert import legacy_to_current
-from .dsd import build_dsd
-from .dataset import build_pandas_dataset
-from .write import write_structures, write_dataset
+# Support both direct script execution and module execution
+try:
+    from .parser import parse_lines
+    from .mapping import load_config, tokens_to_rows, normalize, apply_confidentiality, finalize_numeric
+    from .convert import legacy_to_current
+    from .dsd import build_dsd
+    from .dataset import build_pandas_dataset
+    from .write import write_structures, write_dataset
+except ImportError:
+    # Fallback for direct script execution
+    from parser import parse_lines
+    from mapping import load_config, tokens_to_rows, normalize, apply_confidentiality, finalize_numeric
+    from convert import legacy_to_current
+    from dsd import build_dsd
+    from dataset import build_pandas_dataset
+    from write import write_structures, write_dataset
 
 
 DEFAULT_DEMO = [
@@ -19,7 +29,7 @@ DEFAULT_DEMO = [
 
 def main():
     ap = argparse.ArgumentParser(description="Legacy BIS LBS -> SDMX 3.x (pysdmx) generator")
-    ap.add_argument("--config", default="lbs_sdmx/mapping_config.yaml")
+    ap.add_argument("--config", default="ibs_sdmx/mapping_config.yaml")
     ap.add_argument("--legacy-file", help="Path to legacy lines file (if omitted, demo lines used)")
     ap.add_argument("--structure-out", default="structure.xml")
     ap.add_argument("--data-out", default="data.xml")
